@@ -1,0 +1,18 @@
+
+
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGIN_LOADING = 'LOGIN_LOADING';
+export const CLEAR_AUTH_STATE = 'CLEAR_AUTH_STATE';
+export const LOGOUT_USER = 'LOGOUT_USER';
+
+export const GET_SESSION_SUCCESS = 'GET_SESSION_SUCCESS';
+export const SESSION_LOADING = 'SESSION_LOADING';
+export const GET_SESSION_FAILD = 'GET_SESSION_FAILD';
+
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+export const USER_LOADING = 'USER_LOADING';
+export const GET_USER_FAILD = 'GET_USER_FAILD';
+
+
+

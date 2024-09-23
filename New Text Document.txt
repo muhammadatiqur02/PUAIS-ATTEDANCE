@@ -1,0 +1,13 @@
+Download Android Studio and install it with the help of docs
+url-- https://developer.android.com/studio?gclid=Cj0KCQjw9deiBhC1ARIsAHLjR2BTXOdI63pa0WALLoQIP4mX6fPc5hdjGvkbVjpl6QE5bG6-OyEGbnAaAqxpEALw_wcB&gclsrc=aw.ds
+
+Download Node js (we used version 18.13.0)
+url-- https://nodejs.org/en/download
+
+Set up React Native Environment
+https://reactnative.dev/docs/environment-setup
+
+Running React Native application
+go to project folder 
+first time run this cmd - npm install
+than run this cmd - npx react-native start
