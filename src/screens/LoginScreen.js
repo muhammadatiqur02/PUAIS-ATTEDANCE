@@ -127,7 +127,7 @@ export default function LoginScreen({ navigation }) {
 
    
     useEffect(() => {
-        if (loginType == "teacher") {
+        if (loginType === 'teacher' || loginType === 'student') {
             setLoading(true);
             const url = `${GLOBAL_BACKEND_URL}/Teacher/DepartmentName`
             axios.get(url).then((res) => {
@@ -180,7 +180,7 @@ export default function LoginScreen({ navigation }) {
                                 <Picker.Item label="Teacher" value="teacher" color={colors.black} />
                             </Picker>
                         </View>
-                        {loginType == 'teacher' && <View  style={{ borderWidth: 1, borderColor: colors.primary, }}>
+                        {(loginType === 'teacher' || loginType === 'student') && <View  style={{ borderWidth: 1, borderColor: colors.primary, }}>
                            <Picker
                                 deptId={deptId}
                                 style={styles.picker}
