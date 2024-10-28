@@ -25,6 +25,7 @@ export default function ProfileScreen({ navigation }) {
             text: 'OK',
             onPress: () => {
               signOut();
+              console.log(`OK`);
             },
           },
         ]);
