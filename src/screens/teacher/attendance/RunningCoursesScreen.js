@@ -54,6 +54,7 @@ const RunningCoursesScreen = ({route,navigation}) => {
         setLoading(true);
         try {
             const url = `${GLOBAL_BACKEND_URL}/Teacher/RunningCourses/?deptId=${user.DeptId}&userId=${user.Id}`
+            console.log(url);
 
             await axios.get(url).then((res) => {
                 

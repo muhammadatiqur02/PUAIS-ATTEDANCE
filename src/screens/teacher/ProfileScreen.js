@@ -40,9 +40,9 @@ export default function ProfileScreen({ navigation }) {
             // Update the user's profile on the server
             const data = JSON.stringify({
                 Data: {
-                    id: updatedUser.id,
-                    deptId: updatedUser.deptId,
-                    username: updatedUser.username,
+                    id: user.UserInfoId,
+                    deptId: user.DeptId,
+                    username: user.UserName,
                     email: updatedUser.Email,
                     address: updatedUser.Address
                 },
@@ -58,10 +58,12 @@ export default function ProfileScreen({ navigation }) {
                 },
                 data: data
             };
-
+console.log(data)
+console.log(user)
             const response = await axios(config);
             if (response.data) {
                 // Update local state with the new user data
+                console.log(response.data)
                 setUser(updatedUser);
                 setIsEditing(false);
                 Alert.alert('Success', 'Profile updated successfully');

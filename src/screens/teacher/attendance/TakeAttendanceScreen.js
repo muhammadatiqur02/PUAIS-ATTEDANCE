@@ -60,6 +60,7 @@ const TakeAttendanceScreen = ({ navigation, route }) => {
     setMessage(null);
     try {
       const url = `${GLOBAL_BACKEND_URL}/StudentAttendance/CheckClassRoutine/?sessionCourseId=${course.id}&day=${day}&deptId=${user.DeptId}`
+      console.log(url);
       //const url = `http://192.168.0.92:8000/api/StudentAttendance/CheckClassRoutine?sessionCourseId=3641&day=Monday&deptId=1`;
      setSurl(`Check Routine : ${url}`);
       await axios.get(url).then((res) => {
@@ -132,8 +133,8 @@ const TakeAttendanceScreen = ({ navigation, route }) => {
     setMessage(null)
     setLoading(true)
     try {
-      const url = `${GLOBAL_BACKEND_URL}/Teacher/GetCourseStudent?courseId=${course.id}&programId=${user.DeptId}`
-     
+      const url = `${GLOBAL_BACKEND_URL}/Teacher/GetCourseStudent?courseId=${course.id}&deptId=${user.DeptId}`
+     console.log(url)
       await axios.get(url).then((res) => {
 
         if (res.data.MessageCode == 200) {

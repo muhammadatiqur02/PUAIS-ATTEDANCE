@@ -64,7 +64,8 @@ const getStudent = async () => {
   setMessage(null)
   setLoading(true)
   try {
-    const url = `${GLOBAL_BACKEND_URL}/Teacher/GetCourseStudent?courseId=${courseId}&programId=1`
+    const url = `${GLOBAL_BACKEND_URL}/Teacher/GetCourseStudent?courseId=${courseId}&deptId=1`
+    console.log(url);
    
     await axios.get(url).then((res) => {
       console.log(res.data);
