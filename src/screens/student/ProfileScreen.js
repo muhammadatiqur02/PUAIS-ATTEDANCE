@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Alert, Button, Dimensions, Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Alert, Button, Dimensions, Image, StyleSheet, Text, View, TextInput } from 'react-native';
 import axios from 'axios'; // Import axios
 import { AuthContext } from '../../context';
 import { ATD_HOME, PROFILE } from '../../constants/routeName';
@@ -15,7 +15,7 @@ export default function ProfileScreen({ navigation }) {
     const [isEditing, setIsEditing] = useState(false);
     const [updatedUser, setUpdatedUser] = useState({ ...user });
 
-    const handleLogout = () => {
+    const handelLogout = () => {
         Alert.alert('Logout!', 'Are you sure you want to logout?', [
             {
                 text: 'Cancel',
@@ -29,16 +29,6 @@ export default function ProfileScreen({ navigation }) {
                 },
             },
         ]);
-    };
-
-    // Function to show developer information
-    const handleShowDevInfo = () => {
-        Alert.alert(
-            'Developer Info',
-            `'Version 2.0': \nDeveloper: Muhammad Atiqur Rahman, Liton Das, Imam Ali Mitu\nBatch: 37th\n\n'Version 1.0': \nDeveloper: Angana Barua, Fariha Chowdhury Bristy, Tasnim Sultana Chowdhury\nBatch: 33rd\n\n'Version 1.0 & 2.0': \nInstructor: Kingshuk Dhar\nAssistant Professor\nDept. of Computer Science & Engineering\nPremier University, Chattogram`,
-            
-            [{ text: 'OK', onPress: () => console.log('Developer Info Closed') }]
-        );
     };
 
     const handleEditProfile = () => {
@@ -81,12 +71,7 @@ export default function ProfileScreen({ navigation }) {
 
     return (
         <>
-            <Header title={`${PROFILE}`} rightIcon="logout" onRightBtnPress={handleLogout} />
-
-            {/* Dev button with <> symbol on the top left */}
-            <TouchableOpacity style={styles.devButton} onPress={handleShowDevInfo}>
-                <Text style={styles.devButtonText}>{'<>Dev '}</Text>
-            </TouchableOpacity>
+            <Header title={`${PROFILE}`} rightIcon="logout" onRightBtnPress={handelLogout} />
 
             <View style={{ backgroundColor: colors.primary, height: Dimensions.get('screen').height * 0.25, justifyContent: 'center', width: Dimensions.get('screen').width }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -167,18 +152,6 @@ export default function ProfileScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    devButton: {
-        position: 'absolute',
-        top: 10,
-        left: 10,
-        backgroundColor: colors.primary,
-        padding: 10,
-        borderRadius: 5,
-    },
-    devButtonText: {
-        color: colors.white,
-        fontWeight: 'bold',
-    },
     Container: {
         justifyContent: 'center',
         alignItems: 'center',

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Alert, Button, Dimensions, Image, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Alert, Button, Dimensions, Image, StyleSheet, Text, View, TextInput } from 'react-native';
 import axios from 'axios'; // Import axios
 import { AuthContext } from '../../context';
 import { ATD_HOME, PROFILE } from '../../constants/routeName';
@@ -31,15 +31,6 @@ export default function ProfileScreen({ navigation }) {
         ]);
     };
 
-    // Function to show developer information
-    const handleShowDevInfo = () => {
-        Alert.alert(
-            'Developer Info',
-            `'Version 2.0': \nDeveloper: Muhammad Atiqur Rahman, Liton Das, Imam Ali Mitu\nBatch: 37th\n\n'Version 1.0': \nDeveloper: Angana Barua, Fariha Chowdhury Bristy, Tasnim Sultana Chowdhury\nBatch: 33rd\n\n'Version 1.0 & 2.0': \nInstructor: Kingshuk Dhar\nAssistant Professor\nDept. of Computer Science & Engineering\nPremier University, Chattogram`,
-            [{ text: 'OK', onPress: () => console.log('Developer Info Closed') }]
-        );
-    };
-
     const handleEditProfile = () => {
         setIsEditing(true);
     };
@@ -49,9 +40,9 @@ export default function ProfileScreen({ navigation }) {
             // Update the user's profile on the server
             const data = JSON.stringify({
                 Data: {
-                    id: user.UserInfoId,
-                    deptId: user.DeptId,
-                    username: user.UserName,
+                    id: updatedUser.id,
+                    deptId: updatedUser.deptId,
+                    username: updatedUser.username,
                     email: updatedUser.Email,
                     address: updatedUser.Address
                 },
@@ -67,13 +58,10 @@ export default function ProfileScreen({ navigation }) {
                 },
                 data: data
             };
-            console.log(data);
-            console.log(user);
 
             const response = await axios(config);
             if (response.data) {
                 // Update local state with the new user data
-                console.log(response.data);
                 setUser(updatedUser);
                 setIsEditing(false);
                 Alert.alert('Success', 'Profile updated successfully');
@@ -87,11 +75,6 @@ export default function ProfileScreen({ navigation }) {
     return (
         <>
             <Header title={`${PROFILE}`} rightIcon="logout" onRightBtnPress={handelLogout} />
-
-            {/* Dev button with <> symbol on the top left */}
-            <TouchableOpacity style={styles.devButton} onPress={handleShowDevInfo}>
-                <Text style={styles.devButtonText}>{'<>Dev '}</Text>
-            </TouchableOpacity>
 
             <View style={{backgroundColor: colors.primary, height: Dimensions.get('screen').height * 0.25, justifyContent: 'center', width: Dimensions.get('screen').width}}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -174,45 +157,27 @@ export default function ProfileScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    devButton: {
-        position: 'absolute',
-        top: 10,
-        left: 10,
-        backgroundColor: colors.primary,
-        padding: 10,
-        borderRadius: 5,
+  input: {
+    height: 50,
+    borderColor: colors.gray,
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+  },
+  list: {
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: colors.gray,
+    borderRadius: 5,
+    alignItems: 'center',
+    backgroundColor: colors.white,
+    shadowOffset: {
+      width: 0,
+      height: 6,
     },
-    devButtonText: {
-        color: colors.white,
-        fontWeight: 'bold',
-    },
-    Container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 10,
-        flex: 1
-    },
-    input: {
-        height: 50,
-        borderColor: colors.gray,
-        borderWidth: 1,
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        marginBottom: 10,
-    },
-    list: {
-        flexDirection: 'row',
-        borderWidth: 1,
-        borderColor: colors.gray,
-        borderRadius: 5,
-        alignItems: 'center',
-        backgroundColor: colors.white,
-        shadowOffset: {
-            width: 0,
-            height: 6,
-        },
-        shadowOpacity: 0.37,
-        shadowRadius: 7.49,
-        elevation: 6,
-    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 6,
+  },
 });

@@ -168,7 +168,7 @@ if(courseId!=null){
                 {courses.map((course, index) => {
                     return (
 
-                        <Picker.Item key={index} label={`${course.semester}${course.sectionname} - ${course.course_short_name}`}  color={colors.gray} value={course} />
+                        <Picker.Item key={index} label={`${course.semester}${course.sectionname ? course.sectionname : ''} - ${course.course_short_name}`}  color={colors.gray} value={course} />
                         //<Picker.Item key={index} label={`${course.semester}${course.sectionname} - ${course.coursename}`}  color={colors.gray} value={course} />
                     )
                 })}

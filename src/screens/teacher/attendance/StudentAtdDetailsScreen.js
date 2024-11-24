@@ -151,7 +151,7 @@ const showShortDetails = async (student)=>{
                {courses.map((course, index) => {
                    return (
 
-                       <Picker.Item key={index} label={`${course.semester}${course.sectionname} - ${course.course_short_name}`}  color={colors.gray} value={course.id} />
+                       <Picker.Item key={index} label={`${course.semester}${course.sectionname ? course.sectionname : ''} - ${course.course_short_name}`}  color={colors.gray} value={course.id} />
                    )
                })}
            </Picker>
