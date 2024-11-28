@@ -48,9 +48,10 @@ export default function LoginScreen({ navigation }) {
         let userToken = null;
 
         if (id && password) {
+            const encodedPassword = encodeURIComponent(password);
 
             if (loginType != 'teacher') {
-                const url = `${GLOBAL_BACKEND_URL}/Login/LoginAction/?user=${id}&pass=${password}&loginType=${loginType}`;
+                const url = `${GLOBAL_BACKEND_URL}/Login/LoginAction/?user=${id}&pass=${encodedPassword}&loginType=${loginType}`;
                 console.log(url);   
                 try {
                     await axios.post(url).then((res) => {
@@ -85,7 +86,8 @@ export default function LoginScreen({ navigation }) {
                 }
             }
             else {
-                const url = `${GLOBAL_BACKEND_URL}/Teacher/Login/?deptId=${deptId}&user=${id}&pass=${password}&loginType=${loginType}`;
+                const url = `${GLOBAL_BACKEND_URL}/Teacher/Login/?deptId=${deptId}&user=${id}&pass=${encodedPassword}&loginType=${loginType}`;
+                console.log(url);
                 
                 try {
                     await axios.post(url).then((res) => {
@@ -95,6 +97,7 @@ export default function LoginScreen({ navigation }) {
                             AsyncStorage.setItem('user', JSON.stringify(res.data));
                             setLoading(false);
                             signIn(id, res.data.Id, loginType, res.data);
+                            console.log(res.data);
                            
                         }
                         else if (res.data.MessageCode == 201) {

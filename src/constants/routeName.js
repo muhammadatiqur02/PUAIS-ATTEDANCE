@@ -28,6 +28,7 @@ export const VIEW_COURSE_ATD = "View Courese Attedance"
 export const VIEW_COURSE_ATD_BRIEF = "View Courese Attedance Breif"
 export const VIEW_STUDENT_ATD_DETAILS = "Student Attendance Details"
 export const VIEW_STUDENT_ATD_DETAILS_BRIEF = "Student Attendance Details Breif"
+export const DEVELOPER = 'Developer'; // Add this line
 
 
 
