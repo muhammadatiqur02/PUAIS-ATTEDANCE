@@ -129,39 +129,39 @@ const TakeAttendanceScreen = ({ navigation, route }) => {
   }
 
   const getStudent = async () => {
-    setError(null)
-    setMessage(null)
-    setLoading(true)
+    setError(null);
+    setMessage(null);
+    setLoading(true);
     try {
-      const url = `${GLOBAL_BACKEND_URL}/Teacher/GetCourseStudent?courseId=${course.id}&deptId=${user.DeptId}`
-     console.log(url)
+      const url = `${GLOBAL_BACKEND_URL}/Teacher/GetCourseStudent?courseId=${course.id}&deptId=${user.DeptId}`;
+      console.log(url);
       await axios.get(url).then((res) => {
-
         if (res.data.MessageCode == 200) {
           let arr = res.data.Data.map((item) => {
-            item.isSelected = false
+            item.isSelected = false;
             return { ...item };
-          })
-          
-
+          });
+  
+          // Sort students by 'id' in ascending order
+          arr.sort((a, b) => a.id - b.id); // This will sort them serially based on id.
+  
           setStudents(arr);
           setLoading(false);
-        }
-        else {
+        } else {
           setError(res.data.Message);
           setLoading(false);
         }
       }).catch((err) => {
         setError(err.Message);
         setLoading(false);
-      })
-
-
+      });
+  
     } catch (error) {
       setError(error.Message);
       setLoading(false);
     }
-  }
+  };
+  
 
   const selectionHandelr = async (ind, type) => {
 
