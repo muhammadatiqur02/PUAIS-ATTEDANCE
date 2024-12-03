@@ -78,7 +78,7 @@ const DeveloperInstructorPage = () => {
           <View style={styles.textContainer}>
             <Text style={styles.name}>Muhammad Atiqur Rahman</Text>
             <Text style={styles.role}>Role: Developer</Text>
-            <Text style={styles.version}>Version: 2.0.0</Text>
+            <Text style={styles.version}>Version: 2.0</Text>
             <Text style={styles.batch}>Batch: 37th</Text>
           </View>
         </View>
@@ -96,7 +96,7 @@ const DeveloperInstructorPage = () => {
           <View style={styles.textContainer}>
             <Text style={styles.name}>Liton Das</Text>
             <Text style={styles.role}>Role: Developer</Text>
-            <Text style={styles.version}>Version: 2.0.0</Text>
+            <Text style={styles.version}>Version: 2.0</Text>
             <Text style={styles.batch}>Batch: 37th</Text>
           </View>
         </View>
@@ -114,7 +114,7 @@ const DeveloperInstructorPage = () => {
           <View style={styles.textContainer}>
             <Text style={styles.name}>Imam Ali Mito</Text>
             <Text style={styles.role}>Role: Developer</Text>
-            <Text style={styles.version}>Version: 2.0.0</Text>
+            <Text style={styles.version}>Version: 2.0</Text>
             <Text style={styles.batch}>Batch: 37th</Text>
           </View>
         </View>
@@ -136,7 +136,7 @@ const DeveloperInstructorPage = () => {
           <View style={styles.textContainer}>
             <Text style={styles.name}>Angana Barua</Text>
             <Text style={styles.role}>Role: Developer</Text>
-            <Text style={styles.version}>Version: 1.0.0</Text>
+            <Text style={styles.version}>Version: 1.0</Text>
             <Text style={styles.batch}>Batch: 33rd</Text>
           </View>
         </View>
@@ -154,7 +154,7 @@ const DeveloperInstructorPage = () => {
           <View style={styles.textContainer}>
             <Text style={styles.name}>Fariha Chowdhury Bristy</Text>
             <Text style={styles.role}>Role: Developer</Text>
-            <Text style={styles.version}>Version: 1.0.0</Text>
+            <Text style={styles.version}>Version: 1.0</Text>
             <Text style={styles.batch}>Batch: 33rd</Text>
           </View>
         </View>
@@ -172,7 +172,7 @@ const DeveloperInstructorPage = () => {
           <View style={styles.textContainer}>
             <Text style={styles.name}>Tasnim Sultana Chowdhury</Text>
             <Text style={styles.role}>Role: Developer</Text>
-            <Text style={styles.version}>Version: 1.0.0</Text>
+            <Text style={styles.version}>Version: 1.0</Text>
             <Text style={styles.batch}>Batch: 33rd</Text>
           </View>
         </View>
