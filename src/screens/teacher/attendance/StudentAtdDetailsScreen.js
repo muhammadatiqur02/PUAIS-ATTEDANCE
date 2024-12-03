@@ -71,6 +71,8 @@ const getStudent = async () => {
       console.log(res.data);
       if (res.data.MessageCode == 200) {
        
+        const sortedStudents = res.data.Data.sort((a, b) => a.id - b.id); // Sorting by ID
+        setStudents(sortedStudents);
         setStudents(res.data.Data);
         setLoading(false);
       }
