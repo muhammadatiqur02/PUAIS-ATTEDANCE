@@ -90,6 +90,40 @@ const ViewCourseAtdScreen = ({navigation}) => {
 
  }
 
+ const handleDeleteClass = (item) => {
+    Alert.alert(
+      "Delete Class",
+      "Are you sure you want to delete this Adjustment Class?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              const url = `${GLOBAL_BACKEND_URL}/StudentAttendance/deleteAdjustmentClass?id=${item.id}`;
+              setLoading(true);
+              const response = await axios.delete(url);
+              if (response.data.MessageCode === 200) {
+                setClasses((prevClasses) => prevClasses.filter((cls) => cls.id !== item.id));
+                setMessage("Class deleted successfully.");
+              } else {
+                setError(response.data.Message);
+              }
+            } catch (err) {
+              setError("Failed to delete the class. Please try again.");
+            } finally {
+              setLoading(false);
+            }
+          },
+        },
+      ]
+    );
+  };
+
  const showShortDetails = async (item)=>{
     var sessionId=item.tbl_sessioncourse_id;
     
@@ -183,7 +217,7 @@ if(courseId!=null){
                 {classes.map((item,index)=>{
                    
                     return(
-                        <TouchableOpacity onPress={()=>showShortDetails(item)} key={index} style={[styles.card]}>
+                        <TouchableOpacity onPress={()=>showShortDetails(item)} onLongPress={() => {if (item.adj_class === 1) handleDeleteClass(item);}} key={index} style={[styles.card]}>
                             <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 
                                 <Text style={{fontSize:18,fontWeight:'bold',color:colors.black}}>{moment(item.date).format('DD MMM yyyy')}</Text>
