@@ -92,37 +92,42 @@ const ViewCourseAtdScreen = ({navigation}) => {
 
  const handleDeleteClass = (item) => {
     Alert.alert(
-      "Delete Class",
-      "Are you sure you want to delete this Adjustment Class?",
-      [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-        {
-          text: "Delete",
-          style: "destructive",
-          onPress: async () => {
-            try {
-              const url = `${GLOBAL_BACKEND_URL}/StudentAttendance/deleteAdjustmentClass?id=${item.id}`;
-              setLoading(true);
-              const response = await axios.delete(url);
-              if (response.data.MessageCode === 200) {
-                setClasses((prevClasses) => prevClasses.filter((cls) => cls.id !== item.id));
-                setMessage("Class deleted successfully.");
-              } else {
-                setError(response.data.Message);
-              }
-            } catch (err) {
-              setError("Failed to delete the class. Please try again.");
-            } finally {
-              setLoading(false);
-            }
-          },
-        },
-      ]
+        "Delete Class",
+        "Are you sure you want to delete this Adjustment Class?",
+        [
+            {
+                text: "Cancel",
+                style: "cancel",
+            },
+            {
+                text: "Delete",
+                style: "destructive",
+                onPress: async () => {
+                    try {
+                        // Construct the URL dynamically
+                        const url = `${GLOBAL_BACKEND_URL}/StudentAttendance/DeleteAdjClass?deptId=${user.DeptId}&adjClassId=${item.id}`;
+                        
+                        setLoading(true);
+                        const response = await axios.post(url); // Using POST method as specified
+
+                        if (response.data.MessageCode === 200) {
+                            // Filter out the deleted class
+                            setClasses((prevClasses) => prevClasses.filter((cls) => cls.id !== item.id));
+                            setMessage("Class deleted successfully.");
+                        } else {
+                            setError(response.data.Message || "Failed to delete the class.");
+                        }
+                    } catch (err) {
+                        setError("Failed to delete the class. Please try again.");
+                    } finally {
+                        setLoading(false);
+                    }
+                },
+            },
+        ]
     );
-  };
+};
+
 
  const showShortDetails = async (item)=>{
     var sessionId=item.tbl_sessioncourse_id;

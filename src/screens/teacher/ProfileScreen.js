@@ -124,6 +124,12 @@ export default function ProfileScreen({ navigation }) {
                             onChangeText={(text) => setUpdatedUser({ ...updatedUser, Address: text })}
                             placeholder="Address"
                         />
+                        <TextInput
+                            style={styles.input}
+                            value={updatedUser.designation}
+                            onChangeText={(text) => setUpdatedUser({ ...updatedUser, designation: text })}
+                            placeholder="Designation"
+                        />
 
                         <Button title="Save" onPress={handleSaveProfile} />
                     </>
