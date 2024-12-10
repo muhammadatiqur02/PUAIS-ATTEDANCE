@@ -44,7 +44,6 @@ export default function ProfileScreen({ navigation }) {
                     username: updatedUser.UserName,
                     email: updatedUser.Email,
                     address: updatedUser.Address,
-                    designation: updatedUser.designation,
                 },
                 Message: "",
                 MessageCode: 3,
@@ -123,12 +122,6 @@ export default function ProfileScreen({ navigation }) {
                             value={updatedUser.Address}
                             onChangeText={(text) => setUpdatedUser({ ...updatedUser, Address: text })}
                             placeholder="Address"
-                        />
-                        <TextInput
-                            style={styles.input}
-                            value={updatedUser.designation}
-                            onChangeText={(text) => setUpdatedUser({ ...updatedUser, designation: text })}
-                            placeholder="Designation"
                         />
 
                         <Button title="Save" onPress={handleSaveProfile} />
