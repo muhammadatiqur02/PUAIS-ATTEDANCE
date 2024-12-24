@@ -175,7 +175,7 @@ useEffect(()=>{
                         sessionId={sessionId}
                         style={styles.picker}
                         selectedValue={sessionId}
-                        onValueChange={(itemValue, itemIndex) => {
+                        onValueChange={(itemValue) => {
                             setSessionId(itemValue);
                         }}
                     >
@@ -191,12 +191,14 @@ useEffect(()=>{
                         courseId={course}
                         style={[styles.picker,{marginTop:10}]}
                         selectedValue={course}
-                        onValueChange={(itemValue, itemIndex) => {
-                            setCourseId(itemValue.SessionCourseId);
-                            setCourse(itemValue);
-                            console.log(itemValue);
-
+                        onValueChange={(itemValue) => {
+                            if (itemValue) {
+                                setCourseId(itemValue.SessionCourseId);
+                                setCourse(itemValue);
+                                console.log(itemValue);
+                            }
                         }}
+                            
                     >
                         <Picker.Item label={`Select Course`} color={colors.gray} value={0} />
                         {courses.map((item, index) => {
@@ -213,23 +215,23 @@ useEffect(()=>{
                         </View>}
                    {shortDetails&&<View style={{ backgroundColor:colors.primary_light,padding:10}}>
                
-                <Text style={{color:colors.gray}}>Total Class : {shortDetails.totalClass}</Text>
-                <Text style={{color:colors.gray}}>Present Class : {shortDetails.presentClass}</Text>
-                <Text style={{color:colors.gray}}>Absent Class : {shortDetails.absentClass}</Text>
-                <Text style={{color:colors.gray}}>Parcentage : {shortDetails.percentage}</Text>
+                <Text style={{color:colors.gray}}>Total Class : {shortDetails.totalClass ?? "N/A"}</Text>
+                <Text style={{color:colors.gray}}>Present Class : {shortDetails.presentClass ?? "N/A"}</Text>
+                <Text style={{color:colors.gray}}>Absent Class : {shortDetails.absentClass ?? "N/A"}</Text>
+                <Text style={{color:colors.gray}}>Parcentage : {shortDetails.percentage ?? "N/A"}</Text>
             </View>}
 
             <View>
             {classes?.map((item, index) => {
-                const updateDate = item.date.slice(0, -11);
+                const updateDate = item.date ? item.date.slice(0, -11) : "N/A";
           return (
             <View key={index} style={[styles.card, { backgroundColor:  item.status=='Present' ? colors.success_light : colors.danger_light }]}>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 
                 <Text style={{fontSize:18,fontWeight:'bold',color:colors.black}}>{updateDate}</Text>
-                <Text style={{fontSize:16,color:colors.gray}}>{item.day}</Text>
+                <Text style={{fontSize:16,color:colors.gray}}>{item.day || "N/A"}</Text>
                 </View>
-                <Text style={{color:colors.gray}}>{item.class_start} - {item.class_end}</Text>
+                <Text style={{color:colors.gray}}>{item.class_start || "N/A"} - {item.class_end || "N/A"}</Text>
                 <Text style={{color:colors.gray}}>{item.adjustmentClass==1?'Adjustment Class':''}</Text>
              </View>
 
