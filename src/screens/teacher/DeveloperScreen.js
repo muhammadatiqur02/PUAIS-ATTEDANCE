@@ -58,7 +58,7 @@ const DeveloperInstructorPage = () => {
           />
           <View style={styles.textContainer}>
             <Text style={styles.name}>Gazi Mohammad Tajuddin</Text>
-            <Text style={styles.role}>Role: Technical Supporter</Text>
+            <Text style={styles.role}>Role: Technical Support</Text>
           </View>
         </View>
       </View>

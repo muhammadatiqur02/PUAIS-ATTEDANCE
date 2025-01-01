@@ -81,7 +81,10 @@ const AppNavContainer = () => {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.white }}>
 
-         <Text style={{fontSize:22,color:colors.black,textTransform:'capitalize'}}>PUAIS Attendance System</Text>
+<Text style={{ fontSize: 22, color: colors.black }}>
+  <Text style={{ textTransform: 'uppercase' }}>PUAIS</Text> Attendance System
+</Text>
+
          
         <Image source={require('../assets/images/logo.png')} style={styles.logo} />
        
